@@ -49,9 +49,9 @@ class UserManagementModelView(ModelView):
     column_searchable_list = ('username', 'email')
 
     form_columns = ('username', 'email', 'password')
-    # form_extra_fields = {
-    #     'password_confirm': PasswordField('Password (Confirm)')
-    # }
+    form_extra_fields = {
+        'password_confirm': PasswordField('Password (Confirm)')
+    }
     form_widget_args = {
         'password': {
             'type': "password"
@@ -69,7 +69,7 @@ class UserManagementModelView(ModelView):
     # Overrides the create_model function to create the User object required to create the PasswordUser object
     def create_model(self, form):
         logging.info("UserManagementModelView.create_model(form=" + str(form) + ")")
-        
+
         try:
             user = User() # Added this line to create the user object since its required to create the passworduser object
             model = self.model(user)
