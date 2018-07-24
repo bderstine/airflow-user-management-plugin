@@ -49,9 +49,9 @@ class UserManagementModelView(ModelView):
     column_searchable_list = ('username', 'email')
 
     form_columns = ('username', 'email', 'password')
-    form_extra_fields = {
-        'password_confirm': PasswordField('Password (Confirm)')
-    }
+    # form_extra_fields = {
+    #     'password_confirm': PasswordField('Password (Confirm)')
+    # }
     form_widget_args = {
         'password': {
             'type': "password"
@@ -93,7 +93,7 @@ class UserManagementModelView(ModelView):
     def update_model(self, form, model):
         logging.info("UserManagementModelView.update_model(form=" + str(form) + ", model=" + str(model) + ")")
         logging.info("form.password: " + str(form.password))
-        logging.info("form.password_confirm: " + str(form.password_confirm))
+        #logging.info("form.password_confirm: " + str(form.password_confirm))
         return super(UserManagementModelView, self).update_model(form, model)
 
     def delete_model(self, model):
